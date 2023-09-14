@@ -1,0 +1,17 @@
+{
+    "name": "habitica_discord-bot",
+    "version": "1.0.0",
+    "description": "Un bot de Discord que recibe datos de un webhook y los envía a un canal especificado",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "discord.js": "^14.13.0",
+      "express": "^4.17.1",
+      "body-parser": "^1.19.0",
+      "dotenv": "^10.0.0"
+    },
+    "author": "NereaCassian",
+    "license": "ISC"
+  }
