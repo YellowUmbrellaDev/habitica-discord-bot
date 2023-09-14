@@ -1,22 +1,11 @@
 version: "3.1"
 services:
-  habitica-discord-bot-nerea:
-    container_name: habitica-discord-bot-nerea
+  habitica-discord-bot:
+    container_name: habitica-discord-bot
     build: .
     environment:
       - DISCORD_BOT_TOKEN=
       - USER_NAME=NereaCassian
-    restart: always
-    ports:
-      - 1111:8080
-    volumes:
-      - ./data:/usr/src/app/data
-  habitica-discord-bot-aileen:
-    container_name: habitica-discord-bot-aileen
-    build: .
-    environment:
-      - DISCORD_BOT_TOKEN=
-      - USER_NAME=AileeNyx
     restart: always
     ports:
       - 1111:8080
