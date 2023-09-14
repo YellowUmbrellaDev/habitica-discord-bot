@@ -5,7 +5,7 @@ services:
     build: .
     environment:
       - DISCORD_BOT_TOKEN=
-      - USER_NAME=NereaCassian
+      - USER_NAME=
     restart: always
     ports:
       - 1111:8080
