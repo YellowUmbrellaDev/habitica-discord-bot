@@ -41,6 +41,7 @@ app.post('/webhook', (req, res) => {
 
   const task = data.task.text;
   const streak = data.task.streak;
+  const reward = data.task.notes
 
   // Obtains the user name from the user ID
 
@@ -106,7 +107,7 @@ app.post('/webhook', (req, res) => {
 
   const habitDown = new EmbedBuilder()
     .setAuthor({
-      name: "Retroceso en un hábito ",
+      name: "Retroceso en un hábito",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
       iconURL: "https://i.imgur.com/GZpw4VK.png", //
     })
@@ -124,7 +125,7 @@ app.post('/webhook', (req, res) => {
   // TODO task compelted
   const todoUp = new EmbedBuilder()
     .setAuthor({
-      name: "Tarea completada ",
+      name: "Tarea completada",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
       iconURL: "https://i.imgur.com/QeqL3hz.png", //
     })
@@ -138,7 +139,24 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/PU7Wzos.png",
     })
     .setTimestamp();  
-
+  //Reward claimed
+  const rewardUp = new EmbedBuilder()
+    .setAuthor({
+      name: "Recompensa Reclamada",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/QeqL3hz.png", //
+    })
+    .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
+    .setDescription(`Ha relamado la recompensa **${reward}**`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#A3C255")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp(); 
+  
   // Sends a embed depending on the Type of task and the direction (up or down)
   let channel = client.channels.cache.get(channelId); 
   if (channel) {
@@ -153,7 +171,7 @@ app.post('/webhook', (req, res) => {
     } else if (data.task.type === 'todo' && data.direction === 'up'){
       channel.send({ embeds: [todoUp] });
     } else if (data.task.type === 'reward'){
-      //do nothing
+      channel.send({ embeds: [rewardUp] });
     } else{
       channel.send(`hmmm algo ha salido mal <@!418341963570479124>`);
     }
