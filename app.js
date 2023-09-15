@@ -56,6 +56,7 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/example.png",
     })
     .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
     .setDescription(`Ha completado la tarea **${task}** y esta en una racha de **${streak}** días`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#A3C255")
@@ -73,6 +74,7 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/example.png",
     })
     .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
     .setDescription(`Ha desmarcado la tarea **${task}** y ha disminuido su puntuación`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#B34428")
@@ -90,6 +92,7 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/example.png",
     })
     .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
     .setDescription(`Ha mejorado en el hábito **${task}**`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#B3508D")
@@ -108,6 +111,7 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/example.png",
     })
     .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
     .setDescription(`Ha retrocedido en el hábito **${task}**`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#3973AD")
@@ -125,6 +129,7 @@ app.post('/webhook', (req, res) => {
       iconURL: "https://i.imgur.com/example.png",
     })
     .setTitle(`${userName}`)
+    .setURL("https://habitica.com")
     .setDescription(`Ha completado la tarea **${task}**`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#A3C255")
