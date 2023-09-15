@@ -21,6 +21,9 @@ Start the container
 ```bash
 docker compose up -d
 ```
+
+Invite the bot to your server. You can use this invite link example ``https://discord.com/api/oauth2/authorize?client_id=CLIENT_ID&permissions=2147601408&scope=applications.commands.permissions.update%20bot%20applications.commands``
+
 Then you need to go to your [Habitica settings](https://habitica.com/user/settings/site) and add a webhook URL, if you are hosting locally the format will be ``http://<your-ip>/webhook.`` If you are using a reverse proxy like NGINX (Highly recommended because the webhook may not be sent to an insecure URL) you can use this example config
 
 ```conf
