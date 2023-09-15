@@ -1,6 +1,6 @@
 # Habitica dicord bot
 
-A discord bot that listens for [Habitica](https://habitica.com) webhooks and sends the info to a discord chanel
+A discord bot that listens for [Habitica](https://habitica.com) webhooks and sends the info to a discord channel
 
 # Installation and usage
  
