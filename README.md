@@ -43,6 +43,6 @@ As I said I highly recommended configure an SSL certificate with [Lest's encrypt
 
 And you are all set. Feel free to fork, pull request and translate the app to your language
 
-# Special thanks to my girlfriend [AileeNyx](https://github.com/AileeNyx) who helped me a lot, made the icons in the embeds and gave me most of the ideas. I love you babygirl
+# Special thanks to my girlfriend [AileeNyx](https://github.com/AileeNyx) who helped me a lot, made the icons off the embeds and gave me most of the ideas. I love you babygirl
 
 
