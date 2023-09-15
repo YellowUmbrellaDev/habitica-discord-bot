@@ -152,6 +152,8 @@ app.post('/webhook', (req, res) => {
       channel.send({ embeds: [taskUp] });
     } else if (data.task.type === 'todo' && data.direction === 'up'){
       channel.send({ embeds: [todoUp] });
+    } else if (data.task.type === 'reward'){
+      //do nothing
     } else{
       channel.send(`hmmm algo ha salido mal <@!418341963570479124>`);
     }
