@@ -24,7 +24,6 @@ let channelId = fs.existsSync(channelIdFile) ? fs.readFileSync(channelIdFile, 'u
 
 // Split users chain
 let users = process.env.USERS.split(',');
-console.log(users);
 // Create a onject to map the name and user ID
 let userIdToName = {};
 for (let user of users) {
