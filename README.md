@@ -14,7 +14,7 @@ rename .env.example
 ```bash
 cp .env.example .env
 ```
-Fill with your data. For obtaining you userId you can use a webhook tester like [this](https://typedwebhook.tools). Put the URL that the web gives you in your webhook section in the [Habitica settings](https://habitica.com/user/settings/site). Make any action like complete a task and in the webhook tester search in the JSON response for the field "userID" in the "task" key.
+Fill with your data. For obtaining you ``userId`` you can use a webhook tester like [this](https://typedwebhook.tools). Put the URL that the web gives you in your webhook section in the [Habitica settings](https://habitica.com/user/settings/site). Make any action like complete a task and in the webhook tester search in the JSON response for the field ``"userID"`` in the ``"task"`` key.
 
 Start the container
 
