@@ -93,7 +93,7 @@ app.post('/webhook', (req, res) => {
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
-    .setDescription(`Ha mejorado en el hábito **${task}**`)
+    .setDescription(`Ha progresado en el hábito **${task}**`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
     .setColor("#B3508D")
     .setFooter({
