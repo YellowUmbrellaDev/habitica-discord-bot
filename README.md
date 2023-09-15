@@ -39,7 +39,7 @@ location /webhook {
 ```
 In this case the URL would look like this ``https://<your-domain>/webhook.``
 
-As I said I highly recommend configuring an SSL certificate with [Lest's encrypt](https://www.digitalocean.com/community/tutorials/how-to-use-certbot-standalone-mode-to-retrieve-let-s-encrypt-ssl-certificates-on-ubuntu-16-04), for example 
+As I said I highly recommend configuring an SSL certificate with [Let's encrypt](https://www.digitalocean.com/community/tutorials/how-to-use-certbot-standalone-mode-to-retrieve-let-s-encrypt-ssl-certificates-on-ubuntu-16-04), for example 
 
 And you are all set. Feel free to fork, pull request and translate the app to your language
 
