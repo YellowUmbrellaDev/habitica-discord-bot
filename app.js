@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -9,35 +10,151 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Define el directorio y el archivo para guardar la ID del canal
+// Defines de directory to store de chanel ID
 const dataDir = path.join(__dirname, 'data');
 const channelIdFile = path.join(dataDir, 'channelId.txt');
 
-// Asegúrate de que el directorio exista
+// Making sure the file exists
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);
 }
 
-// Leer la ID del canal del archivo al iniciar la aplicación
+// Reading the chanel ID from the text file
 let channelId = fs.existsSync(channelIdFile) ? fs.readFileSync(channelIdFile, 'utf8') : '';
-let userName = process.env.USER_NAME;
+
+// Split users chain
+let users = process.env.USERS.split(',');
+console.log(users);
+// Create a onject to map the name and user ID
+let userIdToName = {};
+for (let user of users) {
+  let [id, name] = user.split(':');
+  userIdToName[id] = name;
+}
+
+// Webhoock endpoint
 
 app.post('/webhook', (req, res) => {
   let data = req.body;
 
+  res.sendStatus(200);
+
+
+  const task = data.task.text;
+  const streak = data.task.streak;
+
+  // Obtains the user name from the user ID
+
+  let userName = userIdToName[data.task.userId];
+
+  //Embeds
+
+  // Task completed
+  const taskUp = new EmbedBuilder()
+    .setAuthor({
+      name: "Tarea completada",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/example.png",
+    })
+    .setTitle(`${userName}`)
+    .setDescription(`Ha completado la tarea **${task}** y esta en una racha de **${streak}** días`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#A3C255")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp();
+
+  // Task uncheckd
+  const taskDown = new EmbedBuilder()
+    .setAuthor({
+      name: "Tarea desmarcada",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/example.png",
+    })
+    .setTitle(`${userName}`)
+    .setDescription(`Ha desmarcado la tarea **${task}** y ha disminuido su puntuación`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#B34428")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp();
+
+  // Habit progress up
+  const habitUp = new EmbedBuilder()
+    .setAuthor({
+      name: "Progreso en un hábito",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/example.png",
+    })
+    .setTitle(`${userName}`)
+    .setDescription(`Ha mejorado en el hábito **${task}**`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#B3508D")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp();
+
+  // Habit progress down
+
+  const habitDown = new EmbedBuilder()
+    .setAuthor({
+      name: "Retroceso en un hábito ",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/example.png",
+    })
+    .setTitle(`${userName}`)
+    .setDescription(`Ha retrocedido en el hábito **${task}**`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#3973AD")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp();
+
+  // TODO task compelted
+  const todoUp = new EmbedBuilder()
+    .setAuthor({
+      name: "Tarea completada ",
+      url: "https://github.com/NereaCassian/habitica-discord-bot",
+      iconURL: "https://i.imgur.com/example.png",
+    })
+    .setTitle(`${userName}`)
+    .setDescription(`Ha completado la tarea **${task}**`)
+    .setThumbnail("https://i.imgur.com/PU7Wzos.png")
+    .setColor("#A3C255")
+    .setFooter({
+      text: "Habitica Bot",
+      iconURL: "https://i.imgur.com/PU7Wzos.png",
+    })
+    .setTimestamp();  
+
+  // Sends a embed depending on the Type of task and the direction (up or down)
   let channel = client.channels.cache.get(channelId); 
   if (channel) {
-    const task = data.task.text;
-    const streak = data.task.streak;
-    if (data.direction === 'down') {
-      channel.send(`${userName} ha desmarcado la tarea ${task} ha disminuido su puntuación`);
+    if (data.task.type === 'habit' && data.direction === 'down') {
+      channel.send({ embeds: [habitDown] });
+    } else if (data.task.type === 'habit' && data.direction === 'up') {
+      channel.send({ embeds: [habitUp] });
+    } else if (data.task.type === 'daily' && data.direction === 'down') {
+      channel.send({ embeds: [taskDown] });
+    } else if (data.task.type === 'daily' && data.direction === 'up'){
+      channel.send({ embeds: [taskUp] });
+    } else if (data.task.type === 'todo' && data.direction === 'up'){
+      channel.send({ embeds: [todoUp] });
     } else{
-      channel.send(`${userName} ha completado la tarea ${task} y tiene una racha de ${streak} días`);
+      channel.send(`hmmm algo ha salido mal <@!418341963570479124>`);
     }
   }
-
-  res.sendStatus(200);
 });
+
+// Intents
 
 const client = new Client({
   intents: [
@@ -47,6 +164,9 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
   ],
 });
+
+
+// Commando for seting the chanel where the bot send the menssages
 
 client.once('ready', () => {
   client.application.commands.create({
@@ -61,6 +181,8 @@ client.once('ready', () => {
   });
 });
 
+// Sends a confirmation and stores de channel ID in the text file
+
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
@@ -69,14 +191,17 @@ client.on('interactionCreate', async interaction => {
   if (commandName === 'channel') {
     channelId = options.getChannel('channel').id;
 
-    // Guardar la ID del canal en el archivo cada vez que se actualiza
     fs.writeFileSync(channelIdFile, channelId);
 
     await interaction.reply(`Canal configurado correctamente: ${channelId}`);
   }
 });
 
+// Discord bot token
+
 client.login(process.env.DISCORD_BOT_TOKEN);
+
+// Webhoock listener
 
 const listener = app.listen(8080, () => {
   console.log('Tu app está escuchando en el puerto ' + listener.address().port);
