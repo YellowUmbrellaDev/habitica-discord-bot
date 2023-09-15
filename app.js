@@ -53,7 +53,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Tarea completada",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/example.png",
+      iconURL: "https://i.imgur.com/QeqL3hz.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
@@ -71,7 +71,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Tarea desmarcada",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/example.png",
+      iconURL: "https://i.imgur.com/e2c2CZl.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
@@ -89,7 +89,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Progreso en un hábito",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/example.png",
+      iconURL: "https://i.imgur.com/IEP0zOA.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
@@ -108,7 +108,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Retroceso en un hábito ",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/example.png",
+      iconURL: "https://i.imgur.com/GZpw4VK.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
@@ -126,7 +126,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Tarea completada ",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/example.png",
+      iconURL: "https://i.imgur.com/QeqL3hz.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
