@@ -19,7 +19,7 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);
 }
 
-// Reading the chanel ID from the text file
+// Reading the channel ID from the text file
 let channelId = fs.existsSync(channelIdFile) ? fs.readFileSync(channelIdFile, 'utf8') : '';
 
 // Split users chain
@@ -31,7 +31,7 @@ for (let user of users) {
   userIdToName[id] = name;
 }
 
-// Webhoock endpoint
+// Webhook endpoint
 
 app.post('/webhook', (req, res) => {
   let data = req.body;
@@ -66,7 +66,7 @@ app.post('/webhook', (req, res) => {
     })
     .setTimestamp();
 
-  // Task uncheckd
+  // Task unchecked
   const taskDown = new EmbedBuilder()
     .setAuthor({
       name: "Tarea desmarcada",
@@ -170,7 +170,7 @@ const client = new Client({
 });
 
 
-// Commando for seting the chanel where the bot send the menssages
+// Command for seting the channel where the bot send the menssages
 
 client.once('ready', () => {
   client.application.commands.create({
