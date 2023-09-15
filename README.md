@@ -10,7 +10,7 @@ A discord bot that listens for [Habitica](https://habitica.com) webhooks and sen
 
 ## Deployment
 
-rename .env.example
+Rename .env.example
 ```bash
 cp .env.example .env
 ```
