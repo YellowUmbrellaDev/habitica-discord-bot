@@ -144,7 +144,7 @@ app.post('/webhook', (req, res) => {
     .setAuthor({
       name: "Recompensa Reclamada",
       url: "https://github.com/NereaCassian/habitica-discord-bot",
-      iconURL: "https://i.imgur.com/QeqL3hz.png", //
+      iconURL: "https://i.imgur.com/A3A5mFy.png", //
     })
     .setTitle(`${userName}`)
     .setURL("https://habitica.com")
