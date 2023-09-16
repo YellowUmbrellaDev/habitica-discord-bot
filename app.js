@@ -41,7 +41,7 @@ app.post('/webhook', (req, res) => {
 
   const task = data.task.text;
   const streak = data.task.streak;
-  const reward = data.task.notes
+  const reward = data.task.text
 
   // Obtains the user name from the user ID
 
