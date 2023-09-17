@@ -150,7 +150,7 @@ app.post('/webhook', (req, res) => {
     .setURL("https://habitica.com")
     .setDescription(`Ha relamado la recompensa **${reward}**`)
     .setThumbnail("https://i.imgur.com/PU7Wzos.png")
-    .setColor("#A3C255")
+    .setColor("#FEEA00")
     .setFooter({
       text: "Habitica Bot",
       iconURL: "https://i.imgur.com/PU7Wzos.png",
